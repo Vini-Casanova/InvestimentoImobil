@@ -2,11 +2,11 @@ from flask import Response, json
 from database import Database
 
 
-class Service(Database):
+class ServiceUser(Database):
     def __init__(self, url):
         Database.__init__(self,url)
 
-    def insert(self, *args):
+    def createUser(self, *args):
         try:
             INSERT = ('''INSERT INTO cliente(email,nome,senha) VALUES(%s,%s,%s)''')
             self.execute(INSERT, args)
