@@ -29,7 +29,9 @@ def getClienteDados(email):
 def atualizarDadosCliente(email):
     data = request.get_json()
     email = data["email"]
-    return serviceUser.updateUser("sla123", "sla123", email)
+    novo_email= data["novoEmail"]
+    novo_nome=data["novoNome"]
+    return serviceUser.updateUser(novo_email, novo_nome, email)
 
 
 @app.delete('/api/cliente')
