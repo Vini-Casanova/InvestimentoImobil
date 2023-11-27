@@ -4,6 +4,7 @@ import { Hero } from './components/sections/Hero'
 import { Calc } from './components/sections/Calc'
 import { LogIn } from "./components/sections/Login";
 import { SignIn } from "./components/sections/SignUp";
+import { Navbar } from "./components/modules/Navbar";
 
 
 
@@ -13,11 +14,10 @@ const Home: NextPage = () =>{
    
     <main className="bg-slate-300">
       <div >
+        <Navbar/>
         <Hero/>
         <About/>
         <Calc/>
-        <LogIn/>
-        <SignIn/>
       </div>
     </main>
    
