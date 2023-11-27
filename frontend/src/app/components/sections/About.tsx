@@ -20,7 +20,7 @@ export function About() {
             o seu imóvel!
           </Text>
           <Text className="text-black md:text-base">
-          Aqui você ...
+          Aqui você poderá descobrir se o melhor investimento é a compra ou o aluguel do imóvel no tempo que você deseja!
 
           </Text>
         </div>

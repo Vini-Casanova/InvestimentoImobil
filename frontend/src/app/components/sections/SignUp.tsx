@@ -2,7 +2,9 @@ import { Heading } from "../elements/Heading";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 export function SignIn() {
+  const router = useRouter()
   return (
     <div
       className=" flex w-full h-full flex-col items-center justify-center gap-9 px-20 max-[1234px]:flex-wrap max-md:px-4 md:justify-center"
@@ -34,8 +36,8 @@ export function SignIn() {
               <Input id="senha" type="password" />
             </div>
           </div>
-          <div className="flex w-20 h-10 mt-2 mb-10 justify-center bg-blue-950 ">
-            <Button variant="secondary">entrar</Button>
+          <div className="flex w-20 h-10 mt-2 mb-10 justify-center bg-blue-950 text-white">
+            <Button  onClick={() => router.push("historico")} variant="secondary">entrar</Button>
           </div>
         </div>
       </div>

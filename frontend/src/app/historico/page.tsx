@@ -7,7 +7,7 @@ const Historico: NextPage = () =>{
     const router = useRouter()
     return (
       <main className="h-screen bg-slate-300">
-            <Button
+            <Button className="w-35 max-w-[12rem] bg-blue-950 text-white"
            onClick={() => router.push('/')}>
             voltar
            </Button>

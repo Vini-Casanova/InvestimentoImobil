@@ -22,7 +22,7 @@ export function Calc() {
        <Heading
             size="2xl"
             className=" w-fit bg-blue-950"
-            color="text-white"
+            color="text-slate-300"
           >
             Faça o cálculo!
         </Heading>
@@ -74,7 +74,7 @@ export function Calc() {
         </SelectGroup>
       </SelectContent>
     </Select>
-    <div className="flex w-20 h-10 mt-5 mb-10 justify-center bg-blue-950 ">
+    <div className="flex w-20 h-10 mt-5 mb-10 justify-center max-w-[12rem] bg-blue-950 text-white">
     <Button variant="secondary">Calcular</Button>
     </div>
           </div>

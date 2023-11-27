@@ -30,8 +30,8 @@ id='LogIn'>
     </div>
     
 </div>
-<div className="flex w-20 h-10 mt-2 mb-10 justify-center bg-blue-950 ">
-    <Button variant="secondary">entrar</Button>
+<div className="flex w-20 h-10 mt-2 mb-10 justify-center bg-blue-950 text-white">
+    <Button  onClick={() => router.push("historico")} variant="secondary">entrar</Button>
     </div>
 </div>
 

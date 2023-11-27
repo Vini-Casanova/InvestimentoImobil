@@ -8,7 +8,7 @@ export default function Cadastrar(){
 const router = useRouter()
     return (
       <main className="h-screen bg-slate-300">
-           <Button
+           <Button className="w-35 max-w-[12rem] bg-blue-950 text-black-900"
            onClick={() => router.push('/')}>
             voltar
            </Button>
