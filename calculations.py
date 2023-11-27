@@ -37,7 +37,7 @@ def index(valor_compra ,
     number = 0
     minNum = 1
     while number > 0:
-        number=(valor_compra-valor_entrada * (1 + 0.1) ^ tempo )+valor_entrada
+        number = (valor_compra-valor_entrada * (1 + 0.1) ^ tempo)+valor_entrada
         
         
     # x_values = np.linspace(1, 10, 100)
