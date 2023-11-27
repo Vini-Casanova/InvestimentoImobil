@@ -4,12 +4,12 @@ import { Heading } from '../elements/Heading';
 
 export function About() {
     return (
-      <section className="relative flex w-full min-h-[calc(100vh_-_230px)] items-center justify-center gap-9 bg-blue-950 p-20 max-[1234px]:flex-wrap max-md:px-4 max-md:py-16" id="sobre">
+      <section className="relative flex w-full min-h-[calc(100vh_-_230px)] items-center justify-center gap-9 bg-[url('/lines.webp')] p-20 max-[1234px]:flex-wrap max-md:px-4 max-md:py-16" id="sobre">
        
         <div className="flex flex-col gap-4 max-sm:items-center md:w-[40%]">
           <Heading
             size="xl"
-            className=" w-fit bg-white"
+            className=" w-fit bg-slate-300"
             color="text-blue-950"
           >
             Quem somos?

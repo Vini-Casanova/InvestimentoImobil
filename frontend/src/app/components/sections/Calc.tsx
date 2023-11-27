@@ -17,7 +17,7 @@ export function Calc() {
     return (
       <section
         className="mt-24 flex w-full relative  min-h-[calc(100vh_-_230px)] flex-col items-center justify-center gap-9 px-20 max-[1234px]:flex-wrap max-md:px-4 md:justify-center"
-        id="contato"
+        id="Calc"
       >
        <Heading
             size="2xl"
