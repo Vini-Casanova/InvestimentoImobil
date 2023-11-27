@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+"use client"
 import { useEffect, useState } from "react";
 import { Heading } from "../elements/Heading";
 import { Text } from "../elements/Text";
 import { clsx } from "clsx";
 import { List, X } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 
 
 export function Navbar() {
+  const router = useRouter()
   const [isNavbarMobileOpen, setIsNavbarMobileOpen] = useState(false);
 
   const [activeSection, setActiveSection] = useState("");
@@ -75,7 +78,7 @@ export function Navbar() {
           "transition-colors duration-300"
         )}
       >
-        Parajás
+        InvMob
       </Heading>
 
       <div className="flex items-center space-x-10 max-md:hidden">
@@ -104,9 +107,9 @@ export function Navbar() {
           })}
         />
         <ButtonNavbar
-          text="Soluções"
-          onClick={() => handleGoSection("solucoes")}
-          active={activeSection === "solucoes"}
+          text="Cálculo"
+          onClick={() => handleGoSection("Calc")}
+          active={activeSection === "Calc"}
           className={clsx({
             "text-gray-300 hover:text-gray-100":
               sectionsInitials.includes(activeSection),
@@ -116,9 +119,22 @@ export function Navbar() {
           })}
         />
         <ButtonNavbar
-          text="Equipe"
-          onClick={() => handleGoSection("equipe")}
-          active={activeSection === "equipe"}
+          text="Histórico"
+          onClick={() => router.push("historico")}
+          active={activeSection === "historico" || activeSection === "historico"}
+          className={clsx({
+            "text-gray-300 hover:text-gray-100":
+              sectionsInitials.includes(activeSection),
+            "text-gray-800 hover:text-gray-600":
+              !sectionsInitials.includes(activeSection),
+            "text-white": activeSection === "historico",
+          })}
+        />
+        <ButtonNavbar
+          text="Cadastro"
+          
+          onClick={() => router.push('cadastro')}
+          active={activeSection === "SignIn"}
           className={clsx({
             "text-gray-300 hover:text-gray-100":
               sectionsInitials.includes(activeSection),
@@ -128,9 +144,9 @@ export function Navbar() {
           })}
         />
         <ButtonNavbar
-          text="Contato"
-          onClick={() => handleGoSection("contato")}
-          active={activeSection === "contato"}
+          text="LogIn"
+          onClick={() => router.push("login")}
+          active={activeSection === "login"}
           className={clsx({
             "text-gray-300 hover:text-gray-100":
               sectionsInitials.includes(activeSection),
@@ -253,4 +269,41 @@ type ButtonNavbarProps = {
   active?: boolean;
   className?: string;
   onClick?: () => void;
+};
+
+function ButtonNavbar({
+  text,
+  href,
+  active,
+  className,
+  onClick,
+}: ButtonNavbarProps) {
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      className="group relative flex flex-col items-center gap-1"
+    >
+      <Text
+        size="lg"
+        className={clsx(
+          "transition-colors",
+          {
+            "font-bold": active,
+          },
+          className
+        )}
+      >
+        {text}
+      </Text>
+      <span
+        className={clsx(
+          "absolute -bottom-1 h-0 w-0 rounded-md bg-yellow-500 transition-all group-hover:h-[1px] group-hover:w-10/12",
+          {
+            "h-[1px] w-10/12": active,
+          }
+        )}
+      />
+    </a>
+  );
 }
