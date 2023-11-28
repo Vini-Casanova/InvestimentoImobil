@@ -29,7 +29,7 @@ export function Hero() {
         <strong className="text-5xl max-md:text-center shadow-md bg-blue-950 bg-opacity-75 max-md:text-2xl">
           CONHEÇA O {" "}
           <span className="bg-white text-blue-950" color="text-blue-950">MELHOR</span> {" "}
-          <br /> INVESTIMENTO MOBILIÁRIO!
+          <br /> INVESTIMENTO IMOBILIÁRIO!
         </strong>
       </Heading>
       <Text className="text-center text-xl text-black max-md:text-base  bg-blue-950 bg-opacity-75">

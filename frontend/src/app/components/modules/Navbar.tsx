@@ -107,7 +107,7 @@ export function Navbar() {
           })}
         />
         <ButtonNavbar
-          text="Cálculo"
+          text="Simulação"
           onClick={() => handleGoSection("Calc")}
           active={activeSection === "Calc"}
           className={clsx({

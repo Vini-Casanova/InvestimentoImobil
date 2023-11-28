@@ -21,7 +21,7 @@ export function Historic() {
           </Heading>
         
           <Text className="text-black md:text-base" color="text-blue-950">
-          Aqui você poderá visualizar todos os cálculos antecedentes 
+          Aqui você poderá visualizar todas as suas simulações antecedentes 
 
           </Text>
         </div>
