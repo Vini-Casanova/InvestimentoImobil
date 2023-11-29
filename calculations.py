@@ -5,41 +5,51 @@ import numpy as np
 import base64
 
 
-def valores_pago(valor_pago_mes:[],total_pago_ano:int, tempo:int,taxa):
-    for i in range(1, tempo+1):
-        num = valor_pago_mes[i - 1] * (1 + taxa/100)
+def valores_pago(valor_pago_mes: [], tempo: int, taxa):
+    total = 0
+    for i in range(1, tempo):
+        num = valor_pago_mes[i - 1] * (1 + taxa / 100)
         valor_pago_mes.append(num)
-        total_pago_ano+= num*12
+        total += num * 12
+    return total
 
-    
-def index(valor_compra ,
-	valor_entrada,
-	tempo,
-	valor_aluguel,
-    valorizacao_imovel,
-	taxa_financiamento):
 
+def comparando_tempo(aluguel, valor_compra, entrada, taxa_financiamento, taxa_aluguel, tempo):
+    total_pago_compra = ((valor_compra - entrada) * (1 + (taxa_financiamento / 100)) ** (tempo)) + entrada
+    print(total_pago_compra)
+    total_pago_aluguel = 0
+    anos = 1
+    while total_pago_compra > total_pago_aluguel:
+        num = aluguel * (1 + taxa_aluguel / 100)
+        total_pago_aluguel += num * 12
+        anos += 1
+    return {total_pago_aluguel, total_pago_compra, anos}
+
+
+# calcular(600000,150000,10,2000,8.5,11)
+
+def calcular(valor_compra,
+             valor_entrada,
+             tempo,
+             valor_aluguel,
+             valorizacao_imovel,
+             taxa_financiamento):
     # x = symbols('x')
     # Equation: a * (1 + 0.1)^x
-    #y = a * (1 + 0.1) ** x
-    parcela = valor_compra-valor_entrada/tempo
-    valor_pago_mes_compra = [parcela]
-    total_pago_ano_compra = 0
+    # y = a * (1 + 0.1) ** x
+    total_pago_ano_compra = ((valor_compra - valor_entrada) * (1 + (taxa_financiamento / 100)) ** (tempo)) + valor_entrada
+    print(total_pago_ano_compra)
+    valor_pago_mes_compra = total_pago_ano_compra / (tempo * 12)
+    print(valor_pago_mes_compra)
+
     valor_pago_mes_aluguel = [valor_aluguel]
-    total_pago_ano_aluguel = 0
+    total_pago_ano_aluguel = valores_pago(valor_pago_mes_aluguel, tempo, valorizacao_imovel)
 
-    valores_pago(valor_pago_mes_compra,total_pago_ano_compra,tempo,taxa_financiamento)
-    valores_pago(valor_pago_mes_aluguel,total_pago_ano_aluguel,tempo,valorizacao_imovel)
+    print(valor_pago_mes_aluguel)
+    print(total_pago_ano_aluguel)
 
+    print(comparando_tempo(2000, 600000, 150000, 11, 8.5, 10))
 
-
-    (valor_compra-valor_entrada * (1 + 0.1) ^ tempo )+valor_entrada #  -> Em quanto tempo minimo é necessário para que o somatório seja maior que o totalcomprafinanceada
-    number = 0
-    minNum = 1
-    while number > 0:
-        number = (valor_compra-valor_entrada * (1 + 0.1) ^ tempo)+valor_entrada
-        
-        
     # x_values = np.linspace(1, 10, 100)
     # y_values = [y.evalf(subs={x: val}) for val in x_values]
     #
@@ -61,4 +71,5 @@ def index(valor_compra ,
     #
     # return plot_url
 
-index()
+
+calcular(600000, 150000, 10, 2000, 8.5, 11)
