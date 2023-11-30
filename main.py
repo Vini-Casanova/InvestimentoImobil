@@ -1,39 +1,44 @@
-import os
-import psycopg2
-from dotenv import load_dotenv
 from flask import Flask, request, render_template
-
-import usuario
-
-CREATE_TESTE = (
-    """CREATE TABLE IF NOT EXISTS teste (id SERIAL PRIMARY KEY, name VARCHAR(256))"""
-)
-
+import calculations
+from user_service import ServiceUser
+import os
+from dotenv import load_dotenv
 
 load_dotenv()
-
+url = os.getenv("DATABASE_URI")
 
 app = Flask(__name__)
-url = os.getenv("DATABASE_URI")
-connection = psycopg2.connect(url)
+serviceUser = ServiceUser(url)
 
 
-
-@app.post('/api/teste')
-def createAccount():
+@app.post('/api/client')
+def createClient():
     data = request.get_json()
-    name = data["name"]
-    with connection:
-        with connection.cursor() as cursor:
-            cursor.execute(CREATE_TESTE)
-            ##cursor.fetchall()
-    return "SUCESSO"
+    email = data["email"]
+    senha = data["senha"]
+    name = data["nome"]
+    return serviceUser.createUser(email, senha, name)
 
 
+@app.get('/api/cliente/<email>')
+def getClienteDados(email):
+    return serviceUser.selectUser(email)
 
-@app.route('/')
-def teste():
-    return render_template("teste.html",plot_url=usuario.index())
+
+@app.patch('/api/cliente')
+def atualizarDadosCliente(email):
+    data = request.get_json()
+    email = data["email"]
+    novo_email= data["novoEmail"]
+    novo_nome=data["novoNome"]
+    return serviceUser.updateUser(novo_email, novo_nome, email)
+
+
+@app.delete('/api/cliente')
+def excluirCliente():
+    data = request.get_json()
+    email = data["email"]
+    return serviceUser.deleteUser(email)
 
 
 app.run()
